@@ -1,13 +1,10 @@
-<%= form_for(pet) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :species %>
-  <%= f.text_field :species %>
-  <%= f.label :age %>
-  <%= f.number_field :age %>
-  <%= f.label :found_on %>
-  <%= f.date_field :found_on %>
-  <%= f.submit %>
+<%# A form generated using the simpleform gem, look how much simpler it is compared to the old form at _old_form.html.erb! %>
+<%= simple_form_for pet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :age %>
+  <%# When we want to provide users a drop down to choose from we use the collection argument and pass the collection of items we'd like the user to choose from.  This is where our constant in our model comes in handy! %>
+  <%= f.input :species, collection: Pet::TYPES %>
+  <%= f.input :found_on %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
