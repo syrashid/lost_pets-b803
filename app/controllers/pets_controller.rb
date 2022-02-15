@@ -1,10 +1,16 @@
 class PetsController < ApplicationController
-  before_action :set_pet, except: [:index, :new, :create]
+  # We use a before action for common actions that need to happen before controller actions.  These include show, edit, update, and destroy, where we need to know which pet we are performing that action on
+
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  # 👆 can also be like this 👇
+  # before_action :set_pet, except: [:index, :new, :create]
+
 
   def index
     @pets = Pet.all
   end
 
+  # We've abstracted away all this code with our before action above, the method is a private method only accessible by our controller
   def show; end
 
   def new
