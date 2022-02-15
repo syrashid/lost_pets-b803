@@ -1,15 +1,33 @@
-<h1>Pets#index</h1>
 
-<ul>
-<% @pets.each do |pet| %>
-<%= link_to pet_path(pet) do %>
-<i class="fa-solid fa-cat"></i>
-<% end %>
-<%= link_to "Delete",
-            pet_path(pet),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-  </li>
-<% end %>
 
-</ul>
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">All The Lost Pets</h1>
+  </div>
+</div>
+<%# Lots of bootstrap mixed in to make the application look nice super quick with absolutely no css, took a few cool components like cards and a faux jumbotron.  Check them out on bootstrap %>
+<div class="container mt-2">
+  <div class="row">
+    <% @pets.each do |pet| %>
+    <div class="col-12">
+      <div class="card" style="">
+        <div class="card-body">
+          <h3 class="card-title"><%= link_to pet.name.capitalize,  pet_path(pet)%></h5>
+          <%# Peep the super cool pluralize method I'm using below, something given us by Rails to use in our views when we're uncertain whether something will be plural or not %>
+          <h6 class="card-subtitle mb-2 text-muted">Found <%= pluralize(pet.found_days_ago, 'day') %> ago</h6>
+          <%= link_to 'Edit Pet', edit_pet_path(pet), class: "card-link" %>
+          <%= link_to 'Pet Found!',
+              pet_path(pet),
+              method: :delete,
+              data: { confirm:  "Are you sure?"},
+              class: "card-link" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="card col-sm-4 d-flex justify-content-center" style="width: 18rem; height: 132px">
+      <%= link_to '<i class="fas fa-plus"></i> Add a new pet'.html_safe, new_pet_path, class: "btn btn-primary" %>
+    </div>
+
+  </div>
+</div>
