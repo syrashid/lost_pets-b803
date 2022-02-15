@@ -29,13 +29,13 @@ class PetsController < ApplicationController
 
   def update
     @pet.update(pet_params)
-
     redirect_to pet_path(@pet)
   end
 
   def destroy
+    # After we destroy the pet, where does it make sense for us to be redirected to?  Probably the index page
     @pet.destroy
-
+    # We tell rails where to direct us by taking the prefix and adding "_path"
     redirect_to pets_path
   end
 
