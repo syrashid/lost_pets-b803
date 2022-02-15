@@ -1,10 +1,19 @@
-<%# A form generated using the simpleform gem, look how much simpler it is compared to the old form at _old_form.html.erb! %>
-<%= simple_form_for pet do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :age %>
-  <%# When we want to provide users a drop down to choose from we use the collection argument and pass the collection of items we'd like the user to choose from.  This is where our constant in our model comes in handy! %>
-  <%= f.input :species, collection: Pet::TYPES %>
-  <%= f.input :found_on %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3 align-self-center">
+      <%# A form generated using the simpleform gem, look how much simpler it is compared to the old form at _old_form.html.erb! %>
+      <%= simple_form_for pet do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :age %>
+        <%# When we want to provide users a drop down to choose from we use the collection argument and pass the collection of items we'd like the user to choose from.  This is where our constant in our model comes in handy! %>
+        <%= f.input :species, collection: Pet::SPECIES %>
+        <%= f.input :found_on %>
+        <div class="d-grid gap-2">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
