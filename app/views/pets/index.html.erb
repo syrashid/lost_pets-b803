@@ -1,0 +1,8 @@
+<h1>Pets#index</h1>
+
+<ul>
+<% @pets.each do |pet| %>
+  <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.found_days_ago %></li>
+<% end %>
+
+</ul>
