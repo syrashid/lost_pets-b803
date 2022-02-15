@@ -1,4 +1,4 @@
-<h1><%= @pet.name %></h1>
+<h1><%= @pet.name %> - <%= link_to "Edit", edit_pet_path(@pet)  %></h1>
 <p>Species: <%= @pet.species %></p>
 <p>Age: <%= @pet.age %></p>
 <p>Found: <%= @pet.address %></p>

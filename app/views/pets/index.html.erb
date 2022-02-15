@@ -2,7 +2,14 @@
 
 <ul>
 <% @pets.each do |pet| %>
-  <li><%= link_to pet.name, pet_path(pet) %> - <%= pet.found_days_ago %></li>
+<%= link_to pet_path(pet) do %>
+<i class="fa-solid fa-cat"></i>
+<% end %>
+<%= link_to "Delete",
+            pet_path(pet),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  </li>
 <% end %>
 
 </ul>
